@@ -31,20 +31,20 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_base);
     }
 
     @Override
     public void setContentView(@LayoutRes int layoutResID) {
 
-        if (contentView == null && R.layout.activity_main == layoutResID) {
-            super.setContentView(R.layout.activity_main);
+        if (contentView == null && R.layout.activity_base == layoutResID) {
+            super.setContentView(R.layout.activity_base);
             contentView = (LinearLayout) findViewById(R.id.layout_center);
             toolbarTitle = (TextView) findViewById(R.id.toolbar_title);
             amRightTv = (TextView) findViewById(R.id.am_right_tv);
             contentView.removeAllViews();
 
-        } else if (layoutResID != R.layout.activity_main) {
+        } else if (layoutResID != R.layout.activity_base) {
             View addView = LayoutInflater.from(this).inflate(layoutResID, null);
             contentView.addView(addView, new ViewGroup.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
             findView();
@@ -59,7 +59,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     public void beforeSetActionBar() {
-
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         mToolbar.setNavigationIcon(R.mipmap.btn_back);
         mToolbar.setTitleTextColor(Color.WHITE);
@@ -135,31 +134,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     public void setMenuClickListener(Toolbar.OnMenuItemClickListener clickListener) {
-
-//        mToolbar.setOnMenuItemClickListener(onMenuItemClickListener);
-
-//        mToolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
-//            @Override
-//            public boolean onMenuItemClick(MenuItem item) {
-//                Log.e(TAG, " onClick menuItem");
-//                switch (item.getItemId()) {
-//                    case R.id.action_settings:
-//                        Toast.makeText(mContext, "action_settings", Toast.LENGTH_SHORT).show();
-//                        break;
-//                    case R.id.action_share:
-//                        Toast.makeText(mContext, "action_share", Toast.LENGTH_SHORT).show();
-//                        break;
-//
-//                    case android.R.id.home:
-//                        Toast.makeText(mContext, "home", Toast.LENGTH_SHORT).show();
-//                        break;
-//                    default:
-//                        Log.e(TAG, " id=" + item.getItemId());
-//                        break;
-//                }
-//                return true;
-//            }
-//        });
         this.onMenuItemClickListener = clickListener;
     }
 
